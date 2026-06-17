@@ -50,6 +50,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === bookingDialog) bookingDialog.close();
   });
 
+  // Sticky header shadow on scroll
+  const siteHeader = document.getElementById("site-header");
+  const updateHeader = () => {
+    if (!siteHeader) return;
+    siteHeader.classList.toggle("scrolled", window.scrollY > 12);
+  };
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+
+  // Scroll-reveal animations
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && revealEls.length) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            // small stagger for grouped siblings
+            const delay = el.dataset.delay ? `${el.dataset.delay}ms` : null;
+            if (delay) el.style.transitionDelay = delay;
+            el.classList.add("is-visible");
+            revealObserver.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach((el) => revealObserver.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  }
+
   const calcAreaInput = document.getElementById("calc-area");
   const calcAreaValue = document.getElementById("calc-area-value");
   const calculatedPriceText = document.getElementById("calculated-price");
@@ -100,6 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formCarpetType) formCarpetType.value = selectedType;
     if (formOptions) formOptions.value = activeOptions.join(", ");
     if (formTotalPrice) formTotalPrice.value = String(total);
+
+    // Update slider progress fill
+    if (calcAreaInput) {
+      const min = Number(calcAreaInput.min) || 0;
+      const max = Number(calcAreaInput.max) || 100;
+      const progress = ((area - min) / (max - min)) * 100;
+      calcAreaInput.style.setProperty("--slider-progress", `${progress}%`);
+    }
   };
 
   typeCards.forEach((card) => {
