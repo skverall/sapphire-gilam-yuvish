@@ -1,313 +1,303 @@
 <!DOCTYPE html>
-<html lang="uz" data-theme="light">
+<html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sapphire Gilam Yuvish</title>
   <meta name="description" content="Gilamlaringiz uchun toza, ehtiyotkor va qulay xizmat.">
-  
-  <!-- Plus Jakarta Sans Font -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23006b43' d='M32 4c9 12 18 23 18 36 0 12-8 20-18 20S14 52 14 40C14 27 23 16 32 4Z'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Header -->
   <header class="site-header">
     <div class="container header-container">
       <a href="#" class="logo" aria-label="Sapphire Gilam Yuvish">
-        <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 28C22 28 26 23 26 16C26 9.5 16 3 16 3C16 3 6 9.5 6 16C6 23 10 28 16 28Z" fill="url(#dropletGradient)"/>
-          <path d="M16 28C20.5 28 23.5 24.5 23.5 16C23.5 11.5 16 7 16 7C16 7 8.5 11.5 8.5 16C8.5 24.5 11.5 28 16 28Z" fill="url(#leafGradient)"/>
-          <path d="M11.5 18C13 16.5 16 16.5 16 16.5C16 16.5 19 16.5 20.5 18C22 19.5 20.5 22.5 16 22.5C11.5 22.5 10 19.5 11.5 18Z" fill="white" opacity="0.25"/>
-          <path d="M10 23C11.5 21.8 13 22.2 16 22.2C19 22.2 20.5 21.8 22 23" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-          <defs>
-            <linearGradient id="dropletGradient" x1="6" y1="3" x2="26" y2="28" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#006b43"/>
-              <stop offset="100%" stop-color="#004d30"/>
-            </linearGradient>
-            <linearGradient id="leafGradient" x1="8.5" y1="7" x2="23.5" y2="28" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#2ecc71"/>
-              <stop offset="100%" stop-color="#006b43"/>
-            </linearGradient>
-          </defs>
+        <svg class="logo-icon" viewBox="0 0 68 58" aria-hidden="true">
+          <path d="M34 2c9 12 17 21 17 32 0 12-8 21-17 21S17 46 17 34C17 23 25 14 34 2Z" fill="#006b43"/>
+          <path d="M35 14c5 7 9 13 9 20 0 8-4 14-10 14-6 0-10-6-10-14 0-7 5-13 11-20Z" fill="#ffffff" opacity=".22"/>
+          <path d="M8 45h10l6 5 7-5 7 5 7-5 6 5 6-5h3M8 53h8l6-4 7 4 7-4 7 4 6-4 7 4h8" fill="none" stroke="#006b43" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <div class="logo-text">
+        <span class="logo-copy">
           <span class="logo-title">Sapphire</span>
           <span class="logo-subtitle">Gilam Yuvish</span>
-        </div>
+        </span>
       </a>
 
       <nav class="desktop-nav" aria-label="Asosiy menyu">
-        <ul class="nav-list">
-          <li><a href="#services" class="nav-link">Xizmatlar</a></li>
-          <li><a href="#process" class="nav-link">Jarayon</a></li>
-          <li><a href="#contact" class="nav-link">Bog'lanish</a></li>
-        </ul>
+        <a href="#services">Xizmatlar</a>
+        <a href="#process">Jarayon</a>
+        <a href="#contact">Bog'lanish</a>
       </nav>
 
       <div class="header-actions">
-        <!-- Theme Toggle -->
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Mavzuni o'zgartirish">
-          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
         <button class="btn btn-primary open-booking-btn">Buyurtma berish</button>
-        <button id="menu-trigger" class="menu-trigger-btn" aria-label="Menyuni ochish" aria-expanded="false" aria-controls="mobile-nav">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
+        <button id="menu-trigger" class="menu-trigger" type="button" aria-label="Menyuni ochish" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Nav Sheet -->
-  <div id="mobile-nav" class="mobile-nav-sheet" aria-hidden="true">
-    <div class="mobile-nav-content">
-      <ul class="mobile-nav-list">
-        <li><a href="#services" class="mobile-nav-link">Xizmatlar</a></li>
-        <li><a href="#process" class="mobile-nav-link">Jarayon</a></li>
-        <li><a href="#contact" class="mobile-nav-link">Bog'lanish</a></li>
-        <li><button class="btn btn-primary open-booking-btn mobile-booking-btn">Buyurtma berish</button></li>
-      </ul>
-    </div>
+  <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav-panel" aria-label="Mobil menyu">
+      <a class="mobile-nav-link" href="#services">Xizmatlar</a>
+      <a class="mobile-nav-link" href="#process">Jarayon</a>
+      <a class="mobile-nav-link" href="#pricing">Narxlar</a>
+      <a class="mobile-nav-link" href="#contact">Bog'lanish</a>
+      <button class="btn btn-primary open-booking-btn">Buyurtma berish</button>
+    </nav>
   </div>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true">
+        <img src="images/hero_cleaner.png" alt="">
+      </div>
       <div class="container hero-container">
-        <div class="hero-content">
-          <h1 class="hero-title">Toza gilam,<br><span class="highlight-text">toza uy</span></h1>
-          <p class="hero-subtitle">Gilamlaringiz uchun toza, ehtiyotkor va qulay xizmat.</p>
-          <button class="btn btn-primary open-booking-btn">Buyurtma berish</button>
-        </div>
-        <div class="hero-image-wrapper">
-          <img src="images/hero_cleaner.png" alt="Sapphire Gilam Yuvish xodimi" class="hero-image" fetchpriority="high">
+        <div class="hero-copy">
+          <h1 id="hero-title">Toza gilam,<br>toza uy</h1>
+          <p>Gilamlaringiz uchun toza, ehtiyotkor va qulay xizmat.</p>
+          <button class="btn btn-primary btn-large open-booking-btn">Buyurtma berish</button>
         </div>
       </div>
     </section>
 
-    <!-- Features Row -->
-    <section id="services" class="features-section">
+    <section id="services" class="features-section" aria-label="Asosiy xizmatlar">
       <div class="container features-container">
-        <!-- Feature 1 -->
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3v3M12 18v3M4 12h3M17 12h3M6.3 6.3l2.1 2.1M15.6 15.6l2.1 2.1M17.7 6.3l-2.1 2.1M8.4 15.6l-2.1 2.1"/>
+              <path d="M12 8.5 13.2 11l2.8.4-2 1.9.5 2.7-2.5-1.3L9.5 16l.5-2.7-2-1.9 2.8-.4L12 8.5Z"/>
             </svg>
-          </div>
-          <span class="feature-text">Chuqur tozalash</span>
-        </div>
+          </span>
+          <strong>Chuqur tozalash</strong>
+        </article>
 
-        <!-- Feature 2 -->
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M12 8v8"/>
-              <path d="M8 12h8"/>
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3 5 6v5c0 5 3.1 8.5 7 10 3.9-1.5 7-5 7-10V6l-7-3Z"/>
+              <path d="M9 12.4 11.2 15 15.5 9.5"/>
             </svg>
-          </div>
-          <span class="feature-text">Xavfsiz yuvish</span>
-        </div>
+          </span>
+          <strong>Xavfsiz yuvish</strong>
+        </article>
 
-        <!-- Feature 3 -->
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="3" width="15" height="13"></rect>
-              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-              <circle cx="5.5" cy="18.5" r="2.5"></circle>
-              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/>
+              <path d="M6.5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17.5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM3 11H1M3 14H2"/>
             </svg>
-          </div>
-          <span class="feature-text">Olib ketish</span>
-        </div>
+          </span>
+          <strong>Olib ketish</strong>
+        </article>
       </div>
     </section>
 
-    <!-- Process Section -->
-    <section id="process" class="process-section">
+    <section id="process" class="process-section" aria-label="Ish jarayoni">
       <div class="container process-container">
-        
-        <!-- Step 1 -->
-        <div class="process-step" data-step="1">
-          <div class="step-num-badge">1</div>
-          <div class="step-icon-circle">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="3" width="15" height="13"></rect>
-              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-              <circle cx="5.5" cy="18.5" r="2.5"></circle>
-              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        <article class="process-step">
+          <span class="step-num">1</span>
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/>
+              <path d="M6.5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17.5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
             </svg>
-          </div>
-          <span class="step-text">Olib ketamiz</span>
-        </div>
-
-        <div class="process-divider" aria-hidden="true"></div>
-
-        <!-- Step 2 -->
-        <div class="process-step" data-step="2">
-          <div class="step-num-badge">2</div>
-          <div class="step-icon-circle">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22a7 7 0 0 0 7-7H5a7 7 0 0 0 7 7z"/>
-              <path d="M12 2a3 3 0 0 0-3 3v2h6V5a3 3 0 0 0-3-3z"/>
+          </span>
+          <strong>Olib ketamiz</strong>
+        </article>
+        <span class="process-divider" aria-hidden="true"></span>
+        <article class="process-step">
+          <span class="step-num">2</span>
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 13h16v2a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-2Z"/>
+              <path d="M7 13v-2c0-2 1.5-3 3-3M12 13v-3c0-2 1.5-3 3-3M17 13v-1.5c0-1.5 1-2.5 2.5-2.5"/>
+              <path d="M8 5h.1M12 4h.1M16 5h.1"/>
             </svg>
-          </div>
-          <span class="step-text">Yuvamiz</span>
-        </div>
-
-        <div class="process-divider" aria-hidden="true"></div>
-
-        <!-- Step 3 -->
-        <div class="process-step" data-step="3">
-          <div class="step-num-badge">3</div>
-          <div class="step-icon-circle">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+          </span>
+          <strong>Yuvamiz</strong>
+        </article>
+        <span class="process-divider" aria-hidden="true"></span>
+        <article class="process-step">
+          <span class="step-num">3</span>
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="m3 10 9-7 9 7"/>
+              <path d="M5 9.5V21h14V9.5M10 21v-6h4v6"/>
             </svg>
-          </div>
-          <span class="step-text">Yetkazamiz</span>
-        </div>
-
+          </span>
+          <strong>Yetkazamiz</strong>
+        </article>
       </div>
     </section>
 
-    <!-- Bottom Showcase & Contact Grid -->
-    <section class="bottom-grid-section">
-      <div class="container bottom-grid">
-        
-        <!-- Showcase Card 1 -->
-        <div class="grid-card image-card">
-          <img src="images/carpet_scrubbing.png" alt="Gilam yuvish jarayoni" class="grid-img">
-        </div>
-
-        <!-- Showcase Card 2 -->
-        <div class="grid-card image-card">
-          <img src="images/clean_living_room.png" alt="Toza shinam xona" class="grid-img">
-        </div>
-
-        <!-- Contact Card 3 -->
-        <div class="grid-card contact-card">
-          <div class="contact-card-content">
-            <h3 class="contact-card-title">Biz bilan bog‘laning</h3>
-            <p class="contact-card-text">Savollaringiz bormi?<br>Biz sizga yordam berishga tayyormiz.</p>
-            <div class="contact-card-footer">
-              <button class="btn btn-primary open-booking-btn">Buyurtma berish</button>
-              <div class="social-links-row">
-                <a href="https://wa.me/998901234567" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp" aria-label="WhatsApp">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.727-1.459L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.69 1.977 14.22 .953 11.597.953c-5.445 0-9.87 4.371-9.874 9.799-.001 1.76.474 3.477 1.377 5.006l-.993 3.626 3.72-.968c1.554.848 3.12 1.282 4.737 1.282zm11.367-7.635c-.31-.155-1.837-.906-2.119-1.01-.282-.103-.488-.155-.69.155-.202.31-.784 1.01-.96 1.213-.177.202-.353.227-.662.072-.31-.155-1.307-.482-2.49-1.537-.92-.82-1.54-1.833-1.72-2.143-.18-.31-.019-.478.135-.632.14-.139.31-.361.466-.542.155-.18.207-.31.31-.516.103-.207.052-.387-.026-.542-.077-.155-.69-1.663-.945-2.277-.248-.596-.501-.514-.69-.523-.178-.009-.382-.01-.587-.01-.205 0-.54.077-.823.387-.282.31-1.077 1.052-1.077 2.566s1.1 2.981 1.25 3.19c.15.207 2.162 3.3 5.239 4.625.732.315 1.303.503 1.748.644.736.233 1.407.2 1.938.12.59-.09 1.837-.75 2.095-1.443.257-.693.257-1.29.18-1.417-.076-.128-.282-.207-.59-.362z"/>
-                  </svg>
-                </a>
-                <a href="https://t.me/sapphire_gilam" target="_blank" rel="noopener noreferrer" class="social-btn telegram" aria-label="Telegram">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1 .22-1.6 1.48-1.55 2.73-2.61 4.18-3.8.18-.16.32-.42.06-.52-.27-.1-.95-.08-1.58.34l-5.32 3.59c-.58.39-1.11.58-1.59.57-.53-.01-1.54-.3-2.29-.54-.93-.3-1.67-.46-1.6-.97.03-.26.39-.53 1.07-.81 4.2-1.82 7-3.03 8.4-3.63 4-.17 4.83.67 4.85.83-.02.48-.07.96-.07 1.01z"/>
-                  </svg>
-                </a>
-                <a href="tel:+998901234567" class="social-btn phone" aria-label="Telefon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                </a>
-              </div>
+    <section class="showcase-section" aria-label="Natijalar va aloqa">
+      <div class="container showcase-grid">
+        <article class="showcase-card image-card">
+          <img src="images/carpet_scrubbing.png" alt="Gilam chuqur yuvilmoqda">
+        </article>
+        <article class="showcase-card image-card">
+          <img src="images/clean_living_room.png" alt="Tozalangan gilamli xona">
+        </article>
+        <article class="showcase-card contact-card">
+          <div>
+            <h2>Biz bilan bog'laning</h2>
+            <p>Savollaringiz bormi?<br>Biz sizga yordam berishga tayyormiz.</p>
+          </div>
+          <div class="contact-actions">
+            <button class="btn btn-primary open-booking-btn">Buyurtma berish</button>
+            <div class="social-links" aria-label="Tezkor aloqa">
+              <a class="social-btn whatsapp" href="https://wa.me/998901234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2a10 10 0 0 0-8.4 15.4L2.5 22l4.8-1.1A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-3.9 15l-.4-.2-2.5.6.6-2.4-.3-.4A8 8 0 0 1 12 4Zm-3.1 4.2c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.9 4.5 3.9 2.2.9 2.6.5 3.1.5.5-.1 1.5-.7 1.7-1.3.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.2l-.7.8c-.1.2-.3.2-.6.1-1.4-.6-2.3-1.5-3-2.7-.1-.3 0-.4.1-.6l.5-.6c.1-.2.2-.3.1-.5l-.8-1.8c-.2-.5-.4-.5-.7-.5Z"/>
+                </svg>
+              </a>
+              <a class="social-btn telegram" href="https://t.me/sapphire_gilam" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21.8 4.6 18.6 20c-.2 1-.8 1.2-1.6.7l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.5 13.7 1.8 12.2c-1-.3-1-1 .2-1.5L20.3 3.6c.9-.3 1.7.2 1.5 1Z"/>
+                </svg>
+              </a>
+              <a class="social-btn phone" href="tel:+998901234567" aria-label="Telefon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 19 19.5 19.5 0 0 1 5 12.8 19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z"/>
+                </svg>
+              </a>
             </div>
           </div>
-        </div>
+        </article>
+      </div>
+    </section>
 
+    <section class="details-section">
+      <div class="container section-heading">
+        <span class="eyebrow">Sapphire xizmati</span>
+        <h2>Uyga qulay, gilamga ehtiyotkor yondashuv</h2>
+        <p>Har bir buyurtma uchun mos yuvish usuli, toza quritish va manzilingizgacha yetkazish jarayoni bir joyda.</p>
+      </div>
+      <div class="container service-grid">
+        <article class="service-card">
+          <strong>Dog'larni ketkazish</strong>
+          <p>Choy, kofe, yog' va kundalik kirlar uchun alohida ishlov beramiz.</p>
+        </article>
+        <article class="service-card">
+          <strong>Antibakterial ishlov</strong>
+          <p>Bolali uylar va allergiyaga sezgir mijozlar uchun yumshoq vositalar.</p>
+        </article>
+        <article class="service-card">
+          <strong>Quritish nazorati</strong>
+          <p>Gilam hidi qolmasligi uchun shamollatilgan va nazoratli quritish.</p>
+        </article>
+        <article class="service-card">
+          <strong>Bepul logistika</strong>
+          <p>Toshkent bo'ylab olib ketish va yetkazish vaqti oldindan kelishiladi.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+      <div class="container pricing-layout">
+        <div class="pricing-copy">
+          <span class="eyebrow">Narxlar</span>
+          <h2>Oldindan aniq hisob, keyin buyurtma</h2>
+          <p>Kalkulyator orqali gilam maydoni, turi va qo'shimcha xizmatlarni tanlab taxminiy narxni darhol ko'ring.</p>
+          <button class="btn btn-primary open-booking-btn">Kalkulyatorni ochish</button>
+        </div>
+        <div class="price-list" aria-label="Narxlar ro'yxati">
+          <div class="price-row">
+            <span>Oddiy gilam</span>
+            <strong>15 000 UZS / m²</strong>
+          </div>
+          <div class="price-row">
+            <span>Junli gilam</span>
+            <strong>20 000 UZS / m²</strong>
+          </div>
+          <div class="price-row">
+            <span>Uzun patli gilam</span>
+            <strong>22 000 UZS / m²</strong>
+          </div>
+          <div class="price-row">
+            <span>Ipak va nozik gilam</span>
+            <strong>35 000 UZS / m²</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container faq-layout">
+        <div>
+          <span class="eyebrow">Savollar</span>
+          <h2>Ko'p so'raladigan savollar</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Gilam qancha vaqtda tayyor bo'ladi?</summary>
+            <p>Odatda 2-4 kun ichida. Gilam turi, dog'lar va ob-havoga qarab muddat oldindan aytiladi.</p>
+          </details>
+          <details>
+            <summary>Olib ketish pullikmi?</summary>
+            <p>Toshkent shahri ichida olib ketish va yetkazish bepul rejalashtiriladi.</p>
+          </details>
+          <details>
+            <summary>Buyurtma qanday beriladi?</summary>
+            <p>"Buyurtma berish" tugmasini bosing, maydonni kiriting va aloqa ma'lumotlarini qoldiring.</p>
+          </details>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer id="contact" class="site-footer">
     <div class="container footer-container">
-      <div class="footer-left">
-        <a href="#" class="logo">
-          <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 28C22 28 26 23 26 16C26 9.5 16 3 16 3C16 3 6 9.5 6 16C6 23 10 28 16 28Z" fill="url(#dropletGradientFooter)"/>
-            <path d="M16 28C20.5 28 23.5 24.5 23.5 16C23.5 11.5 16 7 16 7C16 7 8.5 11.5 8.5 16C8.5 24.5 11.5 28 16 28Z" fill="url(#leafGradientFooter)"/>
-            <defs>
-              <linearGradient id="dropletGradientFooter" x1="6" y1="3" x2="26" y2="28" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#006b43"/>
-                <stop offset="100%" stop-color="#004d30"/>
-              </linearGradient>
-              <linearGradient id="leafGradientFooter" x1="8.5" y1="7" x2="23.5" y2="28" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#2ecc71"/>
-                <stop offset="100%" stop-color="#006b43"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="logo-text">
-            <span class="logo-title">Sapphire</span>
-            <span class="logo-subtitle">Gilam Yuvish</span>
-          </div>
-        </a>
-      </div>
-      
-      <div class="footer-center">
-        <div class="contact-info-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          <a href="tel:+998901234567">+998 90 123 45 67</a>
-        </div>
-        <div class="contact-info-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          <span>Toshkent, O‘zbekiston</span>
-        </div>
+      <a href="#" class="logo footer-logo" aria-label="Sapphire Gilam Yuvish">
+        <svg class="logo-icon" viewBox="0 0 68 58" aria-hidden="true">
+          <path d="M34 2c9 12 17 21 17 32 0 12-8 21-17 21S17 46 17 34C17 23 25 14 34 2Z" fill="#006b43"/>
+          <path d="M35 14c5 7 9 13 9 20 0 8-4 14-10 14-6 0-10-6-10-14 0-7 5-13 11-20Z" fill="#ffffff" opacity=".22"/>
+          <path d="M8 45h10l6 5 7-5 7 5 7-5 6 5 6-5h3M8 53h8l6-4 7 4 7-4 7 4 6-4 7 4h8" fill="none" stroke="#006b43" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-copy">
+          <span class="logo-title">Sapphire</span>
+          <span class="logo-subtitle">Gilam Yuvish</span>
+        </span>
+      </a>
+
+      <div class="footer-contacts">
+        <a href="tel:+998901234567">+998 90 123 45 67</a>
+        <span>Toshkent, O'zbekiston</span>
       </div>
 
-      <div class="footer-right">
-        <span class="copyright-line">&copy; 2024 Sapphire Gilam Yuvish</span>
-        <span class="studio-line">Aydmaxx Studio tomonidan</span>
+      <div class="footer-meta">
+        <span>&copy; 2024 Sapphire Gilam Yuvish</span>
+        <span>Aydmaxx Studio tomonidan</span>
       </div>
     </div>
   </footer>
 
-  <!-- Booking dialog with Live Calculator -->
-  <dialog id="booking-dialog" closedby="any" aria-labelledby="dialog-title">
+  <dialog id="booking-dialog" aria-labelledby="dialog-title">
     <div class="dialog-content">
-      <button class="close-dialog-btn" aria-label="Yopish">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
+      <button class="close-dialog-btn" type="button" aria-label="Yopish">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
         </svg>
       </button>
-      
+
       <div class="dialog-grid">
-        <!-- Live Calculator Panel -->
         <div class="calculator-panel">
-          <h3 class="panel-title">Kalkulyator</h3>
-          <p class="panel-subtitle">Gilamingiz yuvilish narxini hisoblang</p>
-          
+          <h3>Kalkulyator</h3>
+          <p>Gilamingiz yuvilish narxini hisoblang.</p>
+
           <div class="calc-group">
             <label class="calc-label" for="calc-area">
-              <span>Gilam yuzasi (m²):</span>
-              <span id="calc-area-value" class="calc-val-badge">25 m²</span>
+              <span>Gilam yuzasi</span>
+              <span id="calc-area-value">25 m²</span>
             </label>
             <input type="range" id="calc-area" min="5" max="150" value="25" step="1" class="calc-slider">
             <div class="slider-marks">
@@ -316,113 +306,102 @@
               <span>150 m²</span>
             </div>
           </div>
-          
+
           <div class="calc-group">
-            <span class="calc-label-span">Gilam turi:</span>
+            <span class="calc-label-span">Gilam turi</span>
             <div class="carpet-type-grid">
               <label class="type-card active">
                 <input type="radio" name="carpet-type" value="standard" checked>
-                <span class="type-icon">🧵</span>
+                <span class="type-icon">ST</span>
                 <span class="type-name">Oddiy / Sintetik</span>
                 <span class="type-price">15,000 UZS / m²</span>
               </label>
-              
               <label class="type-card">
                 <input type="radio" name="carpet-type" value="wool">
-                <span class="type-icon">🐑</span>
-                <span class="type-name">Junli (Sherst)</span>
+                <span class="type-icon">JN</span>
+                <span class="type-name">Junli</span>
                 <span class="type-price">20,000 UZS / m²</span>
               </label>
-
               <label class="type-card">
                 <input type="radio" name="carpet-type" value="shaggy">
-                <span class="type-icon">🦁</span>
-                <span class="type-name">Uzun patli (Shaggy)</span>
+                <span class="type-icon">SH</span>
+                <span class="type-name">Uzun patli</span>
                 <span class="type-price">22,000 UZS / m²</span>
               </label>
-
               <label class="type-card">
                 <input type="radio" name="carpet-type" value="silk">
-                <span class="type-icon">🐛</span>
-                <span class="type-name">Ipak / Eron gilami</span>
+                <span class="type-icon">IP</span>
+                <span class="type-name">Ipak gilam</span>
                 <span class="type-price">35,000 UZS / m²</span>
               </label>
             </div>
           </div>
 
           <div class="calc-group">
-            <span class="calc-label-span">Qo'shimcha xizmatlar:</span>
+            <span class="calc-label-span">Qo'shimcha xizmatlar</span>
             <div class="calc-checkbox-list">
               <label class="calc-checkbox-item">
                 <input type="checkbox" id="opt-stain" value="5000">
                 <span class="checkbox-box"></span>
-                <span class="checkbox-label-text">Qiyin dog'larni ketkazish (+5,000 UZS/m²)</span>
+                <span>Qiyin dog'larni ketkazish (+5,000 UZS/m²)</span>
               </label>
               <label class="calc-checkbox-item">
                 <input type="checkbox" id="opt-anti" value="3000">
                 <span class="checkbox-box"></span>
-                <span class="checkbox-label-text">Antibakterial ishlov (+3,000 UZS/m²)</span>
+                <span>Antibakterial ishlov (+3,000 UZS/m²)</span>
               </label>
               <label class="calc-checkbox-item">
                 <input type="checkbox" id="opt-deod" value="2000">
                 <span class="checkbox-box"></span>
-                <span class="checkbox-label-text">Dezinfeksiya va xushbo'y ifor (+2,000 UZS/m²)</span>
+                <span>Dezinfeksiya va xushbo'y ifor (+2,000 UZS/m²)</span>
               </label>
             </div>
           </div>
-          
-          <!-- Price display card -->
+
           <div class="price-display-card">
-            <span class="price-title">Taxminiy narx:</span>
-            <span id="calculated-price" class="price-amount">375,000 UZS</span>
-            <span class="price-note">* Olib ketish va yetkazish mutlaqo bepul!</span>
+            <span>Taxminiy narx</span>
+            <strong id="calculated-price">375,000 UZS</strong>
+            <small>Olib ketish va yetkazish bepul.</small>
           </div>
         </div>
 
-        <!-- Order Form Panel -->
         <div class="order-form-panel">
-          <h2 id="dialog-title" class="form-title">Buyurtma berish</h2>
-          <p class="form-subtitle">Tafsilotlarni kiriting va biz buyurtmani rasmiylashtiramiz.</p>
-          
+          <h2 id="dialog-title">Buyurtma berish</h2>
+          <p>Tafsilotlarni kiriting va operatorimiz siz bilan bog'lanadi.</p>
+
           <form id="booking-form" class="interactive-form">
             <input type="hidden" id="form-area" name="area" value="25">
             <input type="hidden" id="form-carpet-type" name="type" value="standard">
             <input type="hidden" id="form-options" name="options" value="">
             <input type="hidden" id="form-total-price" name="total_price" value="375000">
 
-            <div class="form-group">
-              <label for="book-name" class="form-label">Ismingiz</label>
+            <label class="form-group" for="book-name">
+              <span>Ismingiz</span>
               <input type="text" id="book-name" class="form-input" placeholder="Ismingizni kiriting" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="book-phone" class="form-label">Telefon raqamingiz</label>
-              <div class="phone-input-wrapper">
+            </label>
+            <label class="form-group" for="book-phone">
+              <span>Telefon raqamingiz</span>
+              <span class="phone-input-wrapper">
                 <span class="phone-prefix">+998</span>
                 <input type="tel" id="book-phone" class="form-input phone-field" placeholder="(99) 999-99-99" maxlength="14" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="book-address" class="form-label">Manzilingiz</label>
+              </span>
+            </label>
+            <label class="form-group" for="book-address">
+              <span>Manzilingiz</span>
               <input type="text" id="book-address" class="form-input" placeholder="Mahalla, ko'cha, uy va xonadon raqami" required>
-            </div>
-
-            <div class="form-group">
-              <label for="book-date" class="form-label">Olib ketish sanasi</label>
+            </label>
+            <label class="form-group" for="book-date">
+              <span>Olib ketish sanasi</span>
               <input type="date" id="book-date" class="form-input" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Tasdiqlash</button>
+            </label>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Tasdiqlash</button>
           </form>
         </div>
       </div>
     </div>
   </dialog>
 
-  <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
-
   <script src="app.js"></script>
 </body>
 </html>

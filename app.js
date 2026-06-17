@@ -1,162 +1,67 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const menuTrigger = document.getElementById("menu-trigger");
+  const mobileNav = document.getElementById("mobile-nav");
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+  const bookingDialog = document.getElementById("booking-dialog");
+  const openBookingBtns = document.querySelectorAll(".open-booking-btn");
+  const closeDialogBtn = document.querySelector(".close-dialog-btn");
+  const bookingDateInput = document.getElementById("book-date");
+  const toastContainer = document.getElementById("toast-container");
 
-  /* ==========================================
-     THEME TOGGLER (LIGHT / DARK)
-     ========================================== */
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const htmlElement = document.documentElement;
-
-  // Retrieve theme preference or default to system preference
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  if (savedTheme) {
-    htmlElement.setAttribute('data-theme', savedTheme);
-  } else if (systemPrefersDark) {
-    htmlElement.setAttribute('data-theme', 'dark');
-  }
-
-  themeToggleBtn.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Add brief micro-rotation to SVG icons
-    const svgIcon = themeToggleBtn.querySelector('svg:not([style*="display: none"])');
-    if (svgIcon) {
-      svgIcon.style.transform = 'rotate(360deg)';
-      setTimeout(() => svgIcon.style.transform = '', 300);
-    }
-  });
-
-
-  /* ==========================================
-     MOBILE NAVIGATION DRAWER
-     ========================================== */
-  const menuTrigger = document.getElementById('menu-trigger');
-  const mobileNav = document.getElementById('mobile-nav');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-  const toggleMobileNav = (open) => {
-    menuTrigger.setAttribute('aria-expanded', open);
-    mobileNav.setAttribute('aria-hidden', !open);
-    if (open) {
-      mobileNav.classList.add('is-active');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    } else {
-      mobileNav.classList.remove('is-active');
-      document.body.style.overflow = '';
-    }
+  const setMobileNav = (open) => {
+    if (!menuTrigger || !mobileNav) return;
+    menuTrigger.setAttribute("aria-expanded", String(open));
+    mobileNav.setAttribute("aria-hidden", String(!open));
+    mobileNav.classList.toggle("is-active", open);
+    document.body.classList.toggle("nav-open", open);
   };
 
-  menuTrigger.addEventListener('click', () => {
-    const isOpen = menuTrigger.getAttribute('aria-expanded') === 'true';
-    toggleMobileNav(!isOpen);
+  menuTrigger?.addEventListener("click", () => {
+    const isOpen = menuTrigger.getAttribute("aria-expanded") === "true";
+    setMobileNav(!isOpen);
   });
 
-  // Close nav on link click
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => toggleMobileNav(false));
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", () => setMobileNav(false));
   });
 
-  // Also close drawer if window is resized above tablet breakpoint
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && menuTrigger.getAttribute('aria-expanded') === 'true') {
-      toggleMobileNav(false);
-    }
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 760) setMobileNav(false);
   });
 
-
-  /* ==========================================
-     INTERSECTION OBSERVER FOR ANIMATED REVEAL
-     ========================================== */
-  const animatedSections = document.querySelectorAll('.fade-in-section');
-
-  const sectionObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target); // Trigger only once
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px' // Trigger slightly before it fully rolls in
-  });
-
-  animatedSections.forEach(section => {
-    sectionObserver.observe(section);
-  });
-
-
-  /* ==========================================
-     NATIVE DIALOG MODAL CONTROLLER
-     ========================================== */
-  const bookingDialog = document.getElementById('booking-dialog');
-  const openBookingBtns = document.querySelectorAll('.open-booking-btn');
-  const closeDialogBtn = bookingDialog.querySelector('.close-dialog-btn');
-  const bookingDateInput = document.getElementById('book-date');
-
-  // Set minimum booking date to today
   if (bookingDateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    bookingDateInput.min = today;
+    bookingDateInput.min = new Date().toISOString().split("T")[0];
   }
 
-  // Open modal
-  openBookingBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // If mobile drawer was active, close it first
-      toggleMobileNav(false);
-      bookingDialog.showModal();
-    });
-  });
-
-  // Close modal
-  closeDialogBtn.addEventListener('click', () => {
-    bookingDialog.close();
-  });
-
-  /* Modern Web Guidance Fallback: 
-     Light Dismiss backdrop click for browsers that don't support closedby="any" */
-  if (!('closedBy' in HTMLDialogElement.prototype)) {
-    bookingDialog.addEventListener('click', (event) => {
-      // 1. Check if the click target is the dialog tag itself (the backdrop is generated as part of dialog)
-      if (event.target !== bookingDialog) return;
-
-      // 2. Check if click falls within the content container's bounding rectangle
-      const rect = bookingDialog.getBoundingClientRect();
-      const isDialogContent = (
-        rect.top <= event.clientY &&
-        event.clientY <= rect.top + rect.height &&
-        rect.left <= event.clientX &&
-        event.clientX <= rect.left + rect.width
-      );
-
-      // If click was on the actual dialog card content, ignore. If it was outside on backdrop, close.
-      if (!isDialogContent) {
-        bookingDialog.close();
+  openBookingBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+      setMobileNav(false);
+      if (bookingDialog?.showModal) {
+        bookingDialog.showModal();
       }
     });
-  }
+  });
 
+  closeDialogBtn?.addEventListener("click", () => {
+    bookingDialog?.close();
+  });
 
-  /* ==========================================
-     CARPET CLEANING COST CALCULATOR
-     ========================================== */
-  const calcAreaInput = document.getElementById('calc-area');
-  const calcAreaValue = document.getElementById('calc-area-value');
-  const calculatedPriceText = document.getElementById('calculated-price');
-  
-  // Hidden fields inside Form
-  const formArea = document.getElementById('form-area');
-  const formCarpetType = document.getElementById('form-carpet-type');
-  const formOptions = document.getElementById('form-options');
-  const formTotalPrice = document.getElementById('form-total-price');
+  bookingDialog?.addEventListener("click", (event) => {
+    if (event.target === bookingDialog) bookingDialog.close();
+  });
 
-  // Pricing constants (UZS per sq. meter)
+  const calcAreaInput = document.getElementById("calc-area");
+  const calcAreaValue = document.getElementById("calc-area-value");
+  const calculatedPriceText = document.getElementById("calculated-price");
+  const formArea = document.getElementById("form-area");
+  const formCarpetType = document.getElementById("form-carpet-type");
+  const formOptions = document.getElementById("form-options");
+  const formTotalPrice = document.getElementById("form-total-price");
+  const stainCheckbox = document.getElementById("opt-stain");
+  const antiCheckbox = document.getElementById("opt-anti");
+  const deodCheckbox = document.getElementById("opt-deod");
+  const typeCards = document.querySelectorAll(".carpet-type-grid .type-card");
+
   const basePrices = {
     standard: 15000,
     wool: 20000,
@@ -164,192 +69,110 @@ document.addEventListener('DOMContentLoaded', () => {
     silk: 35000
   };
 
-  // Type Selector click handlers
-  const typeCards = document.querySelectorAll('.carpet-type-grid .type-card');
-  typeCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // Prevent double trigger if label triggers click twice (radio + wrapper)
-      typeCards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-      
-      const radio = card.querySelector('input[type="radio"]');
-      if (radio) {
-        radio.checked = true;
-        formCarpetType.value = radio.value;
-        calculateCost();
-      }
-    });
-  });
-
-  // Checkboxes
-  const stainCheckbox = document.getElementById('opt-stain');
-  const antiCheckbox = document.getElementById('opt-anti');
-  const deodCheckbox = document.getElementById('opt-deod');
-
-  // Perform Calculation
   const calculateCost = () => {
-    const area = parseInt(calcAreaInput.value, 10);
-    calcAreaValue.textContent = `${area} m²`;
-    formArea.value = area;
+    if (!calcAreaInput || !calcAreaValue || !calculatedPriceText) return;
 
-    // Get selected type
-    const selectedType = document.querySelector('input[name="carpet-type"]:checked').value;
-    let pricePerMeter = basePrices[selectedType] || 15000;
-
-    // Additional options sum
-    let additionalPricePerMeter = 0;
+    const area = Number.parseInt(calcAreaInput.value, 10) || 25;
+    const selectedType = document.querySelector('input[name="carpet-type"]:checked')?.value || "standard";
     const activeOptions = [];
+    let additionalPricePerMeter = 0;
 
-    if (stainCheckbox.checked) {
-      additionalPricePerMeter += parseInt(stainCheckbox.value, 10);
+    if (stainCheckbox?.checked) {
+      additionalPricePerMeter += Number.parseInt(stainCheckbox.value, 10);
       activeOptions.push("Dog'larni ketkazish");
     }
-    if (antiCheckbox.checked) {
-      additionalPricePerMeter += parseInt(antiCheckbox.value, 10);
+
+    if (antiCheckbox?.checked) {
+      additionalPricePerMeter += Number.parseInt(antiCheckbox.value, 10);
       activeOptions.push("Antibakterial ishlov");
     }
-    if (deodCheckbox.checked) {
-      additionalPricePerMeter += parseInt(deodCheckbox.value, 10);
+
+    if (deodCheckbox?.checked) {
+      additionalPricePerMeter += Number.parseInt(deodCheckbox.value, 10);
       activeOptions.push("Dezinfeksiya");
     }
 
-    formOptions.value = activeOptions.join(', ');
+    const total = area * ((basePrices[selectedType] || basePrices.standard) + additionalPricePerMeter);
 
-    // Total Cost
-    const total = area * (pricePerMeter + additionalPricePerMeter);
-    formTotalPrice.value = total;
-
-    // Format UZS
-    calculatedPriceText.textContent = `${total.toLocaleString('uz-UZ')} UZS`;
+    calcAreaValue.textContent = `${area} m²`;
+    calculatedPriceText.textContent = `${total.toLocaleString("uz-UZ")} UZS`;
+    if (formArea) formArea.value = String(area);
+    if (formCarpetType) formCarpetType.value = selectedType;
+    if (formOptions) formOptions.value = activeOptions.join(", ");
+    if (formTotalPrice) formTotalPrice.value = String(total);
   };
 
-  // Event Listeners for calculator inputs
-  calcAreaInput.addEventListener('input', calculateCost);
-  stainCheckbox.addEventListener('change', calculateCost);
-  antiCheckbox.addEventListener('change', calculateCost);
-  deodCheckbox.addEventListener('change', calculateCost);
-
-  // Run initial calculation
-  calculateCost();
-
-
-  /* ==========================================
-     PHONE INPUT FORMATTER
-     ========================================== */
-  const phoneInputs = document.querySelectorAll('.phone-field');
-
-  phoneInputs.forEach(input => {
-    input.addEventListener('input', (e) => {
-      // Clear non-digit chars
-      let x = e.target.value.replace(/\D/g, '');
-      
-      // Keep only up to 9 digits (prefix is static +998)
-      x = x.substring(0, 9);
-      
-      let formatted = '';
-      if (x.length > 0) {
-        formatted += '(' + x.substring(0, 2);
-      }
-      if (x.length > 2) {
-        formatted += ') ' + x.substring(2, 5);
-      }
-      if (x.length > 5) {
-        formatted += '-' + x.substring(5, 7);
-      }
-      if (x.length > 7) {
-        formatted += '-' + x.substring(7, 9);
-      }
-      
-      e.target.value = formatted;
+  typeCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      typeCards.forEach((item) => item.classList.remove("active"));
+      card.classList.add("active");
+      const radio = card.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+      calculateCost();
     });
   });
 
+  [calcAreaInput, stainCheckbox, antiCheckbox, deodCheckbox].forEach((control) => {
+    control?.addEventListener("input", calculateCost);
+    control?.addEventListener("change", calculateCost);
+  });
 
-  /* ==========================================
-     TOAST NOTIFICATIONS
-     ========================================== */
-  const toastContainer = document.getElementById('toast-container');
+  calculateCost();
+
+  document.querySelectorAll(".phone-field").forEach((input) => {
+    input.addEventListener("input", (event) => {
+      let value = event.target.value.replace(/\D/g, "").substring(0, 9);
+      let formatted = "";
+
+      if (value.length > 0) formatted += `(${value.substring(0, 2)}`;
+      if (value.length > 2) formatted += `) ${value.substring(2, 5)}`;
+      if (value.length > 5) formatted += `-${value.substring(5, 7)}`;
+      if (value.length > 7) formatted += `-${value.substring(7, 9)}`;
+
+      event.target.value = formatted;
+    });
+  });
 
   const showToast = (message) => {
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    
-    // Custom checkmark icon
+    if (!toastContainer) return;
+
+    const toast = document.createElement("div");
+    toast.className = "toast";
     toast.innerHTML = `
-      <svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m20 6-11 11-5-5"></path>
       </svg>
       <span>${message}</span>
     `;
 
     toastContainer.appendChild(toast);
-
-    // Fade-in
-    setTimeout(() => {
-      toast.classList.add('show');
-    }, 10);
-
-    // Auto dismiss after 4 seconds
-    setTimeout(() => {
-      toast.classList.remove('show');
-      // Remove element after transition finishes
-      toast.addEventListener('transitionend', () => {
-        toast.remove();
-      });
-    }, 4000);
+    window.setTimeout(() => toast.classList.add("show"), 10);
+    window.setTimeout(() => {
+      toast.classList.remove("show");
+      toast.addEventListener("transitionend", () => toast.remove(), { once: true });
+    }, 4200);
   };
 
+  const bookingForm = document.getElementById("booking-form");
+  bookingForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  /* ==========================================
-     FORM SUBMISSIONS
-     ========================================== */
-  const landingForm = document.getElementById('landing-contact-form');
-  const bookingForm = document.getElementById('booking-form');
+    const priceFormatted = calculatedPriceText?.textContent || "";
+    showToast(`Buyurtma qabul qilindi. Taxminiy summa: ${priceFormatted}. Operator tez orada bog'lanadi.`);
+    bookingForm.reset();
+    bookingDialog?.close();
 
-  // Handle contact form submit
-  if (landingForm) {
-    landingForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('contact-name').value;
-      const phone = document.getElementById('contact-phone').value;
-      
-      // Simulate API call success
-      showToast(`Rahmat, ${name}! So'rovingiz qabul qilindi. Operator tez orada bog'lanadi.`);
-      landingForm.reset();
-    });
-  }
+    if (calcAreaInput) calcAreaInput.value = "25";
+    if (stainCheckbox) stainCheckbox.checked = false;
+    if (antiCheckbox) antiCheckbox.checked = false;
+    if (deodCheckbox) deodCheckbox.checked = false;
 
-  // Handle booking form submit
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('book-name').value;
-      const priceFormatted = calculatedPriceText.textContent;
-      
-      // Simulate API call success
-      showToast(`Buyurtma muvaffaqiyatli topshirildi! Taxminiy summa: ${priceFormatted}. Aloqada bo'ling.`);
-      
-      // Reset forms and close modal
-      bookingForm.reset();
-      bookingDialog.close();
-      
-      // Reset calculator state
-      calcAreaInput.value = 25;
-      stainCheckbox.checked = false;
-      antiCheckbox.checked = false;
-      deodCheckbox.checked = false;
-      
-      // Reset type active card
-      typeCards.forEach(c => c.classList.remove('active'));
-      const defaultCard = document.querySelector('.type-card input[value="standard"]').closest('.type-card');
-      defaultCard.classList.add('active');
-      document.querySelector('.type-card input[value="standard"]').checked = true;
-      formCarpetType.value = 'standard';
-      
-      calculateCost();
-    });
-  }
+    typeCards.forEach((card) => card.classList.remove("active"));
+    const defaultCard = document.querySelector('.type-card input[value="standard"]')?.closest(".type-card");
+    defaultCard?.classList.add("active");
+    const defaultRadio = document.querySelector('.type-card input[value="standard"]');
+    if (defaultRadio) defaultRadio.checked = true;
 
+    calculateCost();
+  });
 });
