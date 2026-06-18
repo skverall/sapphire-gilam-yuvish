@@ -159,6 +159,17 @@ document.addEventListener("DOMContentLoaded", () => {
     silk: 35000
   };
 
+  const amountFormatter = new Intl.NumberFormat("uz-UZ", {
+    maximumFractionDigits: 0
+  });
+
+  const formatAmount = (amount) => {
+    return amountFormatter
+      .formatToParts(amount)
+      .map((part) => (part.type === "group" ? " " : part.value))
+      .join("");
+  };
+
   const calculateCost = () => {
     if (!calcAreaInput || !calcAreaValue || !calculatedPriceText) return;
 
@@ -169,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (stainCheckbox?.checked) {
       additionalPricePerMeter += Number.parseInt(stainCheckbox.value, 10);
-      activeOptions.push("Dog'larni ketkazish");
+      activeOptions.push("Dogʻlarni ketkazish");
     }
 
     if (antiCheckbox?.checked) {
@@ -179,13 +190,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (deodCheckbox?.checked) {
       additionalPricePerMeter += Number.parseInt(deodCheckbox.value, 10);
-      activeOptions.push("Dezinfeksiya");
+      activeOptions.push("Dezodoratsiya");
     }
 
     const total = area * ((basePrices[selectedType] || basePrices.standard) + additionalPricePerMeter);
 
     calcAreaValue.textContent = `${area} m²`;
-    calculatedPriceText.textContent = `${total.toLocaleString("uz-UZ")} UZS`;
+    calculatedPriceText.textContent = `${formatAmount(total)} soʻm`;
     if (formArea) formArea.value = String(area);
     if (formCarpetType) formCarpetType.value = selectedType;
     if (formOptions) formOptions.value = activeOptions.join(", ");
@@ -256,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const priceFormatted = calculatedPriceText?.textContent || "";
-    showToast(`Buyurtma qabul qilindi. Taxminiy summa: ${priceFormatted}. Operator tez orada bog'lanadi.`);
+    showToast(`Buyurtma qabul qilindi. Taxminiy narx: ${priceFormatted}. Operatorimiz tez orada bogʻlanadi.`);
     bookingForm.reset();
     bookingDialog?.close();
 
