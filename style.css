@@ -929,9 +929,17 @@ button {
   stroke-linejoin: round;
 }
 
-.whatsapp {
-  background: #2ec95c;
-  box-shadow: 0 8px 20px rgba(46, 201, 92, .35);
+.social-btn.instagram svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  box-shadow: 0 8px 20px rgba(220, 39, 67, .35);
 }
 
 .telegram {
