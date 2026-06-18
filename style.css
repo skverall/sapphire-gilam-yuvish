@@ -1394,6 +1394,20 @@ details p {
   font-size: 13px;
 }
 
+.footer-credit {
+  color: rgba(255, 255, 255, .5);
+  font-size: 13px;
+  transition: color .2s ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+}
+
+.footer-credit:hover {
+  color: var(--green-light);
+  text-decoration-color: var(--green-light);
+}
+
 /* ===================================================================
    DIALOG (Booking)
    =================================================================== */
