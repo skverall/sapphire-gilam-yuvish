@@ -82,6 +82,64 @@ document.addEventListener("DOMContentLoaded", () => {
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
+  // Animated counters (count-up when scrolled into view)
+  const counters = document.querySelectorAll(".counter");
+  const runCounter = (el) => {
+    const target = parseFloat(el.dataset.target) || 0;
+    const decimals = parseInt(el.dataset.decimals || "0", 10);
+    const suffix = el.dataset.suffix || "";
+    const duration = 1600;
+    const start = performance.now();
+
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      el.textContent = value.toLocaleString("uz-UZ", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      }) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  if ("IntersectionObserver" in window && counters.length) {
+    const counterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            runCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counters.forEach((c) => counterObserver.observe(c));
+  } else {
+    counters.forEach((c) => {
+      const target = parseFloat(c.dataset.target) || 0;
+      const decimals = parseInt(c.dataset.decimals || "0", 10);
+      c.textContent = target.toLocaleString("uz-UZ", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      }) + (c.dataset.suffix || "");
+    });
+  }
+
+  // Parallax glow following cursor in hero
+  const heroGlow = document.querySelector(".hero-glow");
+  const heroSection = document.querySelector(".hero-section");
+  if (heroGlow && heroSection && window.matchMedia("(pointer:fine)").matches) {
+    heroSection.addEventListener("mousemove", (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      heroGlow.style.transform = `translate(${x * 40}px, ${y * 40}px)`;
+    });
+  }
+
   const calcAreaInput = document.getElementById("calc-area");
   const calcAreaValue = document.getElementById("calc-area-value");
   const calculatedPriceText = document.getElementById("calculated-price");

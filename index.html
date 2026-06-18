@@ -71,7 +71,7 @@
     <section class="hero-section" aria-labelledby="hero-title">
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-art" aria-hidden="true">
-        <img src="images/hero_cleaner.png" alt="">
+        <img src="images/hero_cleaner.webp" alt="" fetchpriority="high" decoding="async">
       </div>
       <div class="container hero-container">
         <div class="hero-copy reveal">
@@ -207,11 +207,17 @@
     <section class="showcase-section" aria-label="Natijalar">
       <div class="container showcase-grid">
         <article class="showcase-card image-card reveal">
-          <img src="images/carpet_scrubbing.png" alt="Gilam chuqur yuvilmoqda">
+          <picture>
+            <source srcset="images/carpet_scrubbing.webp" type="image/webp">
+            <img src="images/carpet_scrubbing.png" alt="Gilam chuqur yuvilmoqda" loading="lazy" decoding="async">
+          </picture>
           <span class="image-card-tag">Chuqur yuvish</span>
         </article>
         <article class="showcase-card image-card reveal">
-          <img src="images/clean_living_room.png" alt="Tozalangan gilamli xona">
+          <picture>
+            <source srcset="images/clean_living_room.webp" type="image/webp">
+            <img src="images/clean_living_room.png" alt="Tozalangan gilamli xona" loading="lazy" decoding="async">
+          </picture>
           <span class="image-card-tag">Natija</span>
         </article>
         <article class="showcase-card contact-card reveal">
@@ -244,6 +250,60 @@
           </div>
           <span class="contact-card-deco" aria-hidden="true"></span>
         </article>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section" aria-label="Raqamlarda">
+      <div class="container stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3l2.1 5.4L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.9-.6L12 3Z"/></svg>
+          </div>
+          <strong class="counter" data-target="12000" data-suffix="+">0</strong>
+          <span>Tozalangan gilam</span>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2.5 14.6 8l6 .9-4.3 4.2 1 6L12 16.4 6.7 19l1-6L3.4 8.9l6-.9L12 2.5Z"/></svg>
+          </div>
+          <strong class="counter" data-target="4.9" data-decimals="1" data-suffix="★">0</strong>
+          <span>Mijozlar bahosi</span>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <strong class="counter" data-target="24" data-suffix=" soat">0</strong>
+          <span>Tez yetkazish</span>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <strong class="counter" data-target="100" data-suffix="%">0</strong>
+          <span>Mamnunlik kafolati</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee-section" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>Chuqur tozalash</span><span class="marquee-dot">✦</span>
+          <span>Bepul olib ketish</span><span class="marquee-dot">✦</span>
+          <span>Antibakterial ishlov</span><span class="marquee-dot">✦</span>
+          <span>Tez yetkazib berish</span><span class="marquee-dot">✦</span>
+          <span>Dog'larni ketkazish</span><span class="marquee-dot">✦</span>
+          <span>Xushbo'y quritish</span><span class="marquee-dot">✦</span>
+          <span>Chuqur tozalash</span><span class="marquee-dot">✦</span>
+          <span>Bepul olib ketish</span><span class="marquee-dot">✦</span>
+          <span>Antibakterial ishlov</span><span class="marquee-dot">✦</span>
+          <span>Tez yetkazib berish</span><span class="marquee-dot">✦</span>
+          <span>Dog'larni ketkazish</span><span class="marquee-dot">✦</span>
+          <span>Xushbo'y quritish</span><span class="marquee-dot">✦</span>
+        </div>
       </div>
     </section>
 
@@ -282,6 +342,51 @@
           </span>
           <strong>Bepul logistika</strong>
           <p>Toshkent bo'ylab olib ketish va yetkazish vaqti oldindan kelishiladi.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section" aria-label="Mijozlar fikri">
+      <div class="container">
+        <div class="section-heading reveal" style="margin-bottom:48px">
+          <span class="eyebrow">Mijozlar fikri</span>
+          <h2>Minglab oilalar ishonadi</h2>
+        </div>
+      </div>
+      <div class="container testimonials-grid">
+        <article class="testimonial-card reveal">
+          <div class="testimonial-stars" aria-label="5 yulduz">★★★★★</div>
+          <p>"Gilamni oldi xuddi yangidek qilib qaytarib berishdi. Hid ham qolmadi, bolam shu ustida o'ynayveradi."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="--c1:#ff8a5b;--c2:#e84a7a">D</span>
+            <span>
+              <strong>Dilnoza K.</strong>
+              <small>Yunusobod, Toshkent</small>
+            </span>
+          </div>
+        </article>
+        <article class="testimonial-card reveal">
+          <div class="testimonial-stars" aria-label="5 yulduz">★★★★★</div>
+          <p>"Olib ketish va yetkazish bepul ekan, vaqtimning robarobasi tejaldi. Narx-hamjihatlikdan mamnunman."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="--c1:#5b8def;--c2:#6d55b7">S</span>
+            <span>
+              <strong>Sardor M.</strong>
+              <small>Chilonzor, Toshkent</small>
+            </span>
+          </div>
+        </article>
+        <article class="testimonial-card reveal">
+          <div class="testimonial-stars" aria-label="5 yulduz">★★★★★</div>
+          <p>"Junli gilamni juda ehtiyot yuvishdi. Rangi va tuklari buzilmadi. Ishona olaman."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" style="--c1:#00c896;--c2:#006b43">N</span>
+            <span>
+              <strong>Nodira R.</strong>
+              <small>Mirobod, Toshkent</small>
+            </span>
+          </div>
         </article>
       </div>
     </section>
