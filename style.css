@@ -1252,6 +1252,10 @@ button {
     var(--soft);
 }
 
+.details-section .section-heading {
+  max-width: 980px;
+}
+
 .service-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1917,6 +1921,32 @@ dialog::backdrop {
   font-size: 14px;
 }
 
+.instant-contact-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.instant-contact-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.instant-phone-btn {
+  background: #ffffff;
+}
+
+.instant-contact-note {
+  margin: 22px 0 0;
+  padding: 18px;
+  border-radius: var(--radius-sm);
+  background: var(--mint);
+  color: var(--green-dark);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
 .calc-group {
   margin-bottom: 24px;
 }
@@ -2279,6 +2309,19 @@ dialog::backdrop {
 
   .header-actions > .btn-primary {
     padding-inline: 18px;
+  }
+
+  .header-phone {
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .72);
+  }
+
+  .header-phone span {
+    display: none;
   }
 }
 
