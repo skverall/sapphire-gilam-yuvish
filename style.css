@@ -642,9 +642,9 @@ button {
 
 .features-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
-  max-width: 980px;
+  max-width: var(--container);
 }
 
 .feature-card {
@@ -1333,6 +1333,112 @@ button {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.55;
+}
+
+.service-highlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
+  gap: 0;
+  margin-top: 44px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.service-highlight-media {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  background: var(--mint);
+}
+
+.service-highlight-media picture,
+.service-highlight-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.service-highlight-media img {
+  object-fit: cover;
+  transition: transform .7s ease;
+}
+
+.service-highlight:hover .service-highlight-media img {
+  transform: scale(1.04);
+}
+
+.service-highlight-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 42px 44px;
+}
+
+.service-highlight-kicker {
+  width: fit-content;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--mint);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.service-highlight h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--green-dark);
+  font-size: 34px;
+  line-height: 1.12;
+  font-weight: 800;
+}
+
+.service-highlight p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.service-highlight-list {
+  display: grid;
+  gap: 11px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-highlight-list li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--green-dark);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.service-highlight-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .45em;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0 2px, transparent 2.5px),
+    var(--grad-green);
+  box-shadow: 0 4px 10px rgba(0, 107, 67, .18);
+}
+
+.service-highlight-action {
+  align-self: flex-start;
+  margin-top: 28px;
 }
 
 /* ===================================================================
@@ -2189,10 +2295,22 @@ dialog::backdrop {
 }
 
 @media (max-width: 980px) {
+  .features-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .service-grid,
   .stats-grid,
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-highlight {
+    grid-template-columns: 1fr;
+  }
+
+  .service-highlight-media {
+    min-height: 280px;
   }
 
   .pricing-layout,
@@ -2319,7 +2437,7 @@ dialog::backdrop {
 
   .features-container {
     width: min(100% - 24px, var(--container));
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
@@ -2425,6 +2543,26 @@ dialog::backdrop {
   .pricing-section,
   .faq-section {
     padding: 64px 0;
+  }
+
+  .service-highlight {
+    margin-top: 34px;
+  }
+
+  .service-highlight-media {
+    min-height: 220px;
+  }
+
+  .service-highlight-copy {
+    padding: 30px 24px;
+  }
+
+  .service-highlight h3 {
+    font-size: 26px;
+  }
+
+  .service-highlight-action {
+    width: 100%;
   }
 
   .stats-section,
