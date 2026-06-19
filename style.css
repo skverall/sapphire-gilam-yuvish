@@ -320,6 +320,45 @@ button {
   color: var(--green);
 }
 
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, .72);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.lang-link {
+  min-width: 22px;
+  padding: 2px 3px;
+  border-radius: 999px;
+  text-align: center;
+  transition: color .2s ease, background .2s ease;
+}
+
+.lang-link:hover,
+.lang-link.is-active {
+  color: var(--green);
+}
+
+.lang-link.is-active {
+  background: var(--mint);
+  cursor: default;
+}
+
+.lang-sep {
+  color: #b5c5be;
+  font-weight: 700;
+}
+
 .menu-trigger {
   display: none;
   width: 44px;
@@ -394,6 +433,13 @@ button {
 
 .mobile-nav-panel .btn {
   margin-top: 14px;
+}
+
+.mobile-nav-panel .lang-switcher {
+  justify-self: start;
+  margin: 12px 0 4px;
+  padding: 8px 12px;
+  background: var(--soft);
 }
 
 /* ===================================================================
@@ -2107,6 +2153,24 @@ dialog::backdrop {
 /* ===================================================================
    RESPONSIVE
    =================================================================== */
+@media (max-width: 1100px) {
+  .header-container {
+    gap: 18px;
+  }
+
+  .desktop-nav {
+    gap: 24px;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .header-actions > .btn-primary {
+    padding-inline: 18px;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero-copy {
     width: 56%;
@@ -2115,7 +2179,7 @@ dialog::backdrop {
     inset: 0 0 0 40%;
   }
   .desktop-nav {
-    gap: 28px;
+    gap: 22px;
   }
 }
 
@@ -2154,6 +2218,12 @@ dialog::backdrop {
   }
 }
 
+@media (max-width: 940px) {
+  .header-actions > .btn-primary {
+    display: none;
+  }
+}
+
 @media (max-width: 760px) {
   .container {
     width: min(100% - 32px, var(--container));
@@ -2165,6 +2235,7 @@ dialog::backdrop {
 
   .desktop-nav,
   .header-actions > .header-phone,
+  .header-actions > .lang-switcher,
   .header-actions > .btn-primary {
     display: none;
   }

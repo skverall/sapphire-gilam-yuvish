@@ -1,12 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
   const menuTrigger = document.getElementById("menu-trigger");
   const mobileNav = document.getElementById("mobile-nav");
-  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link, .mobile-nav .lang-link");
   const bookingDialog = document.getElementById("booking-dialog");
   const openBookingBtns = document.querySelectorAll(".open-booking-btn");
   const closeDialogBtn = document.querySelector(".close-dialog-btn");
   const bookingDateInput = document.getElementById("book-date");
   const toastContainer = document.getElementById("toast-container");
+  const pathSegments = window.location.pathname.split("/").filter(Boolean);
+  const currentLanguage = pathSegments.includes("ru") ? "ru" : pathSegments.includes("en") ? "en" : "uz";
+  const i18n = {
+    uz: {
+      locale: "uz-UZ",
+      currencySuffix: "soʻm",
+      optionLabels: {
+        stain: "Dogʻlarni ketkazish",
+        anti: "Antibakterial ishlov",
+        deod: "Dezodoratsiya"
+      },
+      toast: (price) => `Buyurtma qabul qilindi. Taxminiy narx: ${price}. Operatorimiz tez orada bogʻlanadi.`
+    },
+    ru: {
+      locale: "ru-RU",
+      currencySuffix: "сум",
+      optionLabels: {
+        stain: "Удаление пятен",
+        anti: "Антибактериальная обработка",
+        deod: "Дезодорация"
+      },
+      toast: (price) => `Заказ принят. Примерная цена: ${price}. Наш оператор скоро свяжется с вами.`
+    },
+    en: {
+      locale: "en-US",
+      currencySuffix: "sum",
+      optionLabels: {
+        stain: "Stain removal",
+        anti: "Antibacterial treatment",
+        deod: "Deodorizing"
+      },
+      toast: (price) => `Order received. Estimated price: ${price}. Our operator will contact you soon.`
+    }
+  };
+  const copy = i18n[currentLanguage] || i18n.uz;
 
   const setMobileNav = (open) => {
     if (!menuTrigger || !mobileNav) return;
@@ -95,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const value = target * eased;
-      el.textContent = value.toLocaleString("uz-UZ", {
+      el.textContent = value.toLocaleString(copy.locale, {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals
       }) + suffix;
@@ -121,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     counters.forEach((c) => {
       const target = parseFloat(c.dataset.target) || 0;
       const decimals = parseInt(c.dataset.decimals || "0", 10);
-      c.textContent = target.toLocaleString("uz-UZ", {
+      c.textContent = target.toLocaleString(copy.locale, {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals
       }) + (c.dataset.suffix || "");
@@ -159,15 +194,12 @@ document.addEventListener("DOMContentLoaded", () => {
     silk: 35000
   };
 
-  const amountFormatter = new Intl.NumberFormat("uz-UZ", {
+  const amountFormatter = new Intl.NumberFormat(copy.locale, {
     maximumFractionDigits: 0
   });
 
   const formatAmount = (amount) => {
-    return amountFormatter
-      .formatToParts(amount)
-      .map((part) => (part.type === "group" ? " " : part.value))
-      .join("");
+    return amountFormatter.format(amount);
   };
 
   const calculateCost = () => {
@@ -180,23 +212,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (stainCheckbox?.checked) {
       additionalPricePerMeter += Number.parseInt(stainCheckbox.value, 10);
-      activeOptions.push("Dogʻlarni ketkazish");
+      activeOptions.push(copy.optionLabels.stain);
     }
 
     if (antiCheckbox?.checked) {
       additionalPricePerMeter += Number.parseInt(antiCheckbox.value, 10);
-      activeOptions.push("Antibakterial ishlov");
+      activeOptions.push(copy.optionLabels.anti);
     }
 
     if (deodCheckbox?.checked) {
       additionalPricePerMeter += Number.parseInt(deodCheckbox.value, 10);
-      activeOptions.push("Dezodoratsiya");
+      activeOptions.push(copy.optionLabels.deod);
     }
 
     const total = area * ((basePrices[selectedType] || basePrices.standard) + additionalPricePerMeter);
 
     calcAreaValue.textContent = `${area} m²`;
-    calculatedPriceText.textContent = `${formatAmount(total)} soʻm`;
+    calculatedPriceText.textContent = `${formatAmount(total)} ${copy.currencySuffix}`;
     if (formArea) formArea.value = String(area);
     if (formCarpetType) formCarpetType.value = selectedType;
     if (formOptions) formOptions.value = activeOptions.join(", ");
@@ -267,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const priceFormatted = calculatedPriceText?.textContent || "";
-    showToast(`Buyurtma qabul qilindi. Taxminiy narx: ${priceFormatted}. Operatorimiz tez orada bogʻlanadi.`);
+    showToast(copy.toast(priceFormatted));
     bookingForm.reset();
     bookingDialog?.close();
 
