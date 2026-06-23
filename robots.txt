@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Asosiy qidiruv tizimlari uchun ruxsat (Google, Yandex)
+User-agent: Googlebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+Sitemap: https://yuvamiz.uz/sitemap.xml
+Host: https://yuvamiz.uz

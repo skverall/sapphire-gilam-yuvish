@@ -1,16 +1,31 @@
 {
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/ru",
-      "destination": "/ru/index.html"
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.yuvamiz.uz"
+        }
+      ],
+      "destination": "https://yuvamiz.uz/:path*",
+      "permanent": true
     },
     {
-      "source": "/ru/",
-      "destination": "/ru/index.html"
+      "source": "/ru",
+      "destination": "/ru/",
+      "permanent": true
     },
     {
       "source": "/en",
-      "destination": "/en/index.html"
+      "destination": "/en/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/ru/",
+      "destination": "/ru/index.html"
     },
     {
       "source": "/en/",
